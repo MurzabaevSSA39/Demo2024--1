@@ -22,4 +22,85 @@
 | HQ-SRV         |      ens192    |192.168.0.126   | /25                |192.168.0.1     |
 | BR-SRV         |     	ens192    |192.168.0.158   | /27                |192.168.0.129   |
 
+### Посмотрел интерфейсы
+```
+ip a
+```
+### Зашел в файл настройки конфигурации интерфейсов
+```
+nano /etc/network/interfaces
+```
+### Назначил IP на интерфейсы в соответствии с таблицей
+### ISP
+```
+auto ens192
+iface ens192 inet static
+address 10.12.24.10
+netmask 255.255.255.0
+gateway 10.12.24.254
+
+auto ens224
+iface ens224 inet static
+address 192.168.0.162
+netmask 255.255.255.252
+
+auto ens256 
+iface ens256 inet static
+address 192.168.0.166
+netmask 255.255.255.252
+```
+### BR-R
+```
+auto ens192
+iface ens192 inet static
+address 192.168.0.165
+netmask 255.255.255.252
+gatewy 192.168.0.166
+
+auto ens224
+iface ens224 inet static
+address 192.168.0.129
+netmask 255.255.255.224
+```
+### HQ-R
+```
+auto ens192
+iface ens192 inet static
+address 192.168.0.161
+netmask 255.255.255.252
+gateway 192.168.162
+
+auto ens224
+iface ens224 inet static
+address 192.168.0.1
+netmask 255.255.255.128
+```
+### HQ-SRV
+```
+auto ens192
+iface ens192 inet static
+address 192.168.0.126
+netmask 255.255.255.128
+gateway 192.168.0.1
+```
+### BR-SRV
+```
+auto ens192
+iface ens192 inet static
+address 192.168.0.158
+netmask 255.255.255.224
+gateway 192.168.0.129
+```
+### Сохранил конфигурацию
+```
+Ctrl+S
+```
+### Вышел из конфигурационного файла
+```
+Ctrl+X
+```
+### Перезагрузил сервис работы с сетью
+```
+systemctl restart networking
+```
 
