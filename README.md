@@ -66,7 +66,7 @@ netmask 255.255.255.224
 ```
 auto ens192
 iface ens192 inet static
-address 192.168.0.161
+address 192.168.0.5
 netmask 255.255.255.252
 gateway 192.168.162
 
@@ -79,7 +79,7 @@ netmask 255.255.255.128
 ```
 auto ens192
 iface ens192 inet static
-address 192.168.0.126
+address 192.168.0.6
 netmask 255.255.255.128
 gateway 192.168.0.1
 ```
